@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import OTPInput from "react-otp-input";
+import { HiArrowRight } from "react-icons/hi";
 
 const OTP_LENGTH = 6;
 
-const CheckOTPForm = () => {
+const CheckOTPForm = ({ onBackStep }) => {
     const [otp, setOtp] = useState("");
     const [isSubmittable, setIsSubmittable] = useState(false);
 
@@ -18,9 +19,15 @@ const CheckOTPForm = () => {
 
     return (
         <form
-            className="flex flex-col p-5 rounded-lg bg-gray-50"
+            className="flex flex-col p-5 rounded-lg bg-gray-50 shadow-md"
             onSubmit={(e) => e.preventDefault()}
         >
+            <button
+                className="text-secondary-800 text-xl mb-5"
+                onClick={onBackStep}
+            >
+                <HiArrowRight />
+            </button>
             <h3 className="font-medium text-secondary-900 text-lg">
                 کد تایید را وارد کنید:
             </h3>
