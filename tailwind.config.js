@@ -4,6 +4,7 @@
 
 // eslint-disable-next-line no-undef
 const defaultTheme = require("tailwindcss/defaultTheme");
+import tailwindFormPlugin from "@tailwindcss/forms";
 
 export default {
     // darkMode: ["class", '[data-mode="dark"]'],
@@ -56,5 +57,5 @@ export default {
             padding: "1rem",
         },
     },
-    plugins: [],
+    plugins: [tailwindFormPlugin({ strategy: "class" })],
 };

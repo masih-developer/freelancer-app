@@ -71,10 +71,10 @@
 
 @layer components {
     .app-input {
-        @apply outline-none border-gray-200 bg-gray-50 border text-base p-2 rounded-lg text-secondary-900 focus:border-primary-500 focus:shadow-primary-200 focus:shadow-md duration-300 ease-in-out;
+        @apply outline-none border-gray-200 bg-gray-50 border text-base p-2 rounded-lg text-secondary-900 focus:border-primary-500 focus:shadow-primary-200 focus:shadow-md duration-300 ease-in-out block w-full;
     }
 
     .app-btn {
-        @apply flex mt-5 p-2 w-full justify-center items-center rounded-lg text-white bg-primary-900 hover:bg-primary-800 duration-300 shadow-lg shadow-primary-200 font-medium;
+        @apply flex p-2 w-full justify-center items-center rounded-lg text-white bg-primary-900 hover:bg-primary-800 duration-300 shadow-lg shadow-primary-200 font-medium;
     }
 }
