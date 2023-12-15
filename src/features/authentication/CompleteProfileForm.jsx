@@ -31,7 +31,7 @@ const CompleteProfileForm = () => {
             const { user, message } = res.data.data;
             if (user.status !== 2) {
                 navigate("/");
-                toast.custom("پروفایل شما در انتظار تایید می باشد.", {
+                toast("پروفایل شما در انتظار تایید می باشد.", {
                     icon: "⚠️",
                 });
                 return;
