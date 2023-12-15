@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import Auth from "./pages/Auth";
 import { Toaster } from "react-hot-toast";
@@ -6,6 +6,8 @@ import CompleteProfile from "./pages/CompleteProfile";
 import NotFound from "./pages/NotFound";
 import OwnerLayout from "./layouts/OwnerLayout";
 import Owner from "./pages/Owner";
+import Projects from "./pages/Projects";
+import Project from "./pages/Project";
 
 const App = () => {
     return (
@@ -17,7 +19,13 @@ const App = () => {
                     <Route index element={""} />
                 </Route>
                 <Route path="/owner" element={<OwnerLayout />}>
-                    <Route index element={<Owner />} />
+                    <Route
+                        index
+                        element={<Navigate to="/owner/dashboard" replace />}
+                    />
+                    <Route path="dashboard" element={<Owner />} />
+                    <Route path="projects" element={<Projects />} />
+                    <Route path="project" element={<Project />} />
                 </Route>
                 <Route path="*" element={<NotFound />} />
             </Routes>
