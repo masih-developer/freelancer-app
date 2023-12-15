@@ -49,6 +49,21 @@
         --backdrop-color: 0 0 0;
     }
 
+    ::-webkit-scrollbar {
+        @apply w-1.5 h-1.5;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        /* background: #f1f1f1; */
+        @apply bg-secondary-50;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        @apply bg-secondary-400 rounded-lg;
+    }
+
     /* reset styles */
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -76,5 +91,29 @@
 
     .app-btn {
         @apply flex p-2 w-full justify-center items-center rounded-lg text-white bg-primary-900 hover:bg-primary-800 duration-300 shadow-lg shadow-primary-200 font-medium;
+    }
+
+    .sidebar__links {
+        @apply flex text-secondary-500 items-center gap-x-2 bg-secondary-100 duration-300 hover:text-primary-900 hover:bg-primary-50 p-3 rounded-xl;
+    }
+
+    .sidebar__links--active {
+        @apply text-primary-900 bg-primary-50;
+    }
+
+    .badge {
+        @apply flex items-center justify-center rounded-md px-5 mx-auto py-1.5 text-xs w-16 font-medium ring-1 ring-inset;
+    }
+
+    .badge--success {
+        @apply bg-green-50 text-green-700 ring-green-600/30;
+    }
+
+    .badge--error {
+        @apply bg-red-50 text-red-700 ring-error/30;
+    }
+
+    .badge--gray {
+        @apply bg-secondary-100 text-secondary-800 ring-1 ring-secondary-300;
     }
 }
