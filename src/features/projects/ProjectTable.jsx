@@ -12,8 +12,8 @@ const ProjectTable = () => {
     // if (!data.projects.length) return <div>ProjectTable</div>;
 
     return (
-        <div className="bg-secondary-100  mx-auto p-5 mt-5 rounded-lg overflow-x-auto overflow-hidden">
-            <table className="text-secondary-800 w-full">
+        <div className="mx-auto p-5 mt-5 rounded-lg overflow-x-auto">
+            <table className="text-secondary-700 w-full">
                 <thead className="">
                     <tr className="">
                         <th className="text-center px-2 pb-3 whitespace-nowrap">
