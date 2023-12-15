@@ -1,11 +1,25 @@
+import { useState } from "react";
 import Loading from "../../ui/Loading";
 import toLocaleShortDate from "../../utils/toLocaleShortDate";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
 import turncateText from "../../utils/turncateText";
 import useOwnerProjects from "./useOwnerProjects";
+import Modal from "../../ui/Modal";
+import { HiOutlineTrash } from "react-icons/hi";
 
 const ProjectTable = () => {
     const { data, isLoading } = useOwnerProjects();
+    const [isOpen, setIsOpen] = useState(false);
+    const [deleteLoading, setDeleteLoading] = useState(false);
+
+    const deleteProjectHandler = () => {
+        setDeleteLoading(true);
+
+        setTimeout(() => {
+            setDeleteLoading(false);
+            setIsOpen(false);
+        }, 2000);
+    };
 
     if (isLoading) return <Loading />;
 
@@ -99,7 +113,12 @@ const ProjectTable = () => {
                             <span className="badge badge--success">باز</span>
                         </td>
                         <td className="text-center py-3 bg-white px-1 whitespace-nowrap text-sm">
-                            ...
+                            <button
+                                className="text-white flex items-center justify-center bg-red-500 p-3 rounded-md"
+                                onClick={() => setIsOpen(true)}
+                            >
+                                delete
+                            </button>
                         </td>
                     </tr>
                     <tr>
@@ -185,6 +204,34 @@ const ProjectTable = () => {
                     </tr>
                 </tbody>
             </table>
+            <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+                <div className="text-center w-56">
+                    <HiOutlineTrash className="mx-auto text-6xl text-red-500" />
+                    <div className="mx-auto my-4 w-48">
+                        <h3 className="text-lg font-bold to-gray-800">
+                            Confirm Delete
+                        </h3>
+                        <p className="tesm text-gray-500">
+                            Are you sure to want to delete this item?
+                        </p>
+                    </div>
+                    <div className="flex gap-4 mx-auto justify-center items-center">
+                        <button className="shadow-md px-6 rounded-lg py-2">
+                            Cancel
+                        </button>
+                        {deleteLoading ? (
+                            <Loading size={10} color="red" />
+                        ) : (
+                            <button
+                                className="bg-red-500 text-white px-6 rounded-lg py-2 shadow-md shadow-red-300"
+                                onClick={deleteProjectHandler}
+                            >
+                                Delete
+                            </button>
+                        )}
+                    </div>
+                </div>
+            </Modal>
         </div>
     );
 };
