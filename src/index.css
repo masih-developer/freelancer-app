@@ -29,9 +29,7 @@
         --color-secondary-0: 255 255 255;
         --color-success: 0 192 115;
         --color-warning: 255 153 0;
-        --color-error: 255 71 87;
-        --color-red-500: 239 68 68;
-        --color-red-300: 252 165 165;
+        --color-error: 239 68 68;
     }
 
     :root .dark-mode {
@@ -115,5 +113,13 @@
 
     .badge--gray {
         @apply bg-secondary-100 text-secondary-800 ring-1 ring-secondary-300;
+    }
+
+    .thead-row {
+        @apply [&>th]:text-center [&>th]:px-2 [&>th]:pb-3 [&>th]:whitespace-nowrap;
+    }
+
+    .tbody-row {
+        @apply [&:first-child>td:first-child]:rounded-tr-lg [&:first-child>td:last-child]:rounded-tl-lg [&:last-child>td:first-child]:rounded-br-lg [&:last-child>td:last-child]:rounded-bl-lg [&>td]:text-center [&>td]:py-3 [&>td]:bg-white [&>td]:px-1 [&>td]:whitespace-nowrap [&>td]:text-sm;
     }
 }

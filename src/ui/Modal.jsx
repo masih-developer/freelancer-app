@@ -1,7 +1,8 @@
+import { createPortal } from "react-dom";
 import { HiOutlineX } from "react-icons/hi";
 
 const Modal = ({ open, onClose, children }) => {
-    return (
+    return createPortal(
         <div
             onClick={onClose}
             className={`fixed inset-0 flex backdrop-blur-sm justify-center items-center transition-colors z-50 ${
@@ -9,7 +10,7 @@ const Modal = ({ open, onClose, children }) => {
             }`}
         >
             <div
-                className={`bg-white rounded-xl shadow p-6 transition-all ${
+                className={`bg-white rounded-xl shadow p-5 w-[calc(100vw-1rem)] max-w-screen-sm sm:min-w-[350px] sm:w-fit transition-all max-h-[calc(100vh-1rem)] overflow-y-auto ${
                     open ? "scale-100 opacity-100" : "scale-110 opacity-0"
                 }`}
                 onClick={(e) => e.stopPropagation()}
@@ -20,9 +21,10 @@ const Modal = ({ open, onClose, children }) => {
                 >
                     <HiOutlineX />
                 </button>
-                {children}
+                <div className="mt-5">{children}</div>
             </div>
-        </div>
+        </div>,
+        document.getElementById("root-modal-wrapper")
     );
 };
 

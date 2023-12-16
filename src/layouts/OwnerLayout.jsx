@@ -8,7 +8,7 @@ const OwnerLayout = () => {
                 app header
             </header>
             <Sidebar />
-            <main className="min-h-screen bg-secondary-100 lg:mr-64 w-full lg:w-[calc(100%-256px)] max-w-full px-5 mt-14">
+            <main className="min-h-[calc(100vh-56px)] bg-secondary-100 lg:mr-64 w-full lg:w-[calc(100%-256px)] max-w-full px-5 mt-14">
                 <Outlet />
             </main>
         </div>
