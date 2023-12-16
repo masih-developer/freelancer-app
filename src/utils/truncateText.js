@@ -1,5 +1,5 @@
-const turncateText = (str, len) => {
+const truncateText = (str, len) => {
     return str.length <= len ? str : str.slice(0, len) + "...";
 };
 
-export default turncateText;
+export default truncateText;
