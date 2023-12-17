@@ -1,6 +1,6 @@
 const Table = ({ children }) => {
     return (
-        <div className="mx-auto p-5 mt-5 rounded-lg overflow-x-auto">
+        <div className="rounded-lg overflow-x-auto">
             <table className="text-secondary-700 w-full">{children}</table>
         </div>
     );
