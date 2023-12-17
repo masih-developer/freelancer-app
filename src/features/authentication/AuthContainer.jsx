@@ -4,10 +4,12 @@ import SendOTPForm from "./SendOTPForm";
 import { useMutation } from "@tanstack/react-query";
 import { getOtp } from "../../services/authService";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 
 const AuthContainer = () => {
     const [step, setStep] = useState(1);
-    const [phoneNumber, setPhoneNumber] = useState("09397900270");
+    // const [phoneNumber, setPhoneNumber] = useState("09397900270");
+    const { handleSubmit, register } = useForm();
 
     const { isPending, error, mutateAsync } = useMutation({
         mutationFn: getOtp,
@@ -32,9 +34,8 @@ const AuthContainer = () => {
                 return (
                     <SendOTPForm
                         sendOtpHandler={sendOtpHandler}
-                        phoneNumber={phoneNumber}
-                        onSetPhoneNumber={(e) => setPhoneNumber(e.target.value)}
                         isPending={isPending}
+                        register={register}
                     />
                 );
             case 2:

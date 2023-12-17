@@ -136,7 +136,11 @@ const ProjectTable = () => {
                 </div>
             </Modal>
             {/* delete modal */}
-            <Modal open={isDeleteOpen} onClose={() => setIsDeleteOpen(false)}>
+            <Modal
+                title={projectIden.title}
+                open={isDeleteOpen}
+                onClose={() => setIsDeleteOpen(false)}
+            >
                 <ConfirmDelete
                     title={projectIden.title}
                     onAccept={acceptDeleteHandler}

@@ -1,12 +1,7 @@
 import Loading from "../../ui/Loading";
 import TextField from "../../ui/TextField";
 
-const SendOTPForm = ({
-    phoneNumber,
-    onSetPhoneNumber,
-    sendOtpHandler,
-    isPending,
-}) => {
+const SendOTPForm = ({ onSetPhoneNumber, sendOtpHandler, isPending }) => {
     const submitOtpHandler = (e) => {
         e.preventDefault();
         sendOtpHandler();

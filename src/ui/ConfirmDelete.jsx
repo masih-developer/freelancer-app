@@ -3,15 +3,10 @@ import Loading from "./Loading";
 const ConfirmDelete = ({ title, onAccept, onClose, isPending }) => {
     return (
         <>
-            <div className="border-b border-secondary-200 pb-1">
-                <h3 className="text-lg font-medium text-red-500">
-                    حذف {title}؟
-                </h3>
-            </div>
             <div className="mt-3 mb-10">
                 <p className="text-secondary-700">
-                    آیا از حذف{" "}
-                    <span className="font-bold text-secondary-900">
+                    آیا از حذف پروژه{" "}
+                    <span className="font-bold text-secondary-900 underline">
                         {title}
                     </span>{" "}
                     اطمینان دارید؟
