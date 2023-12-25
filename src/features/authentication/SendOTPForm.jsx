@@ -9,7 +9,7 @@ const SendOTPForm = ({ sendOtpHandler, isPending, register, inputError }) => {
 
   return (
     <form
-      className="shadow-md p-5 w-full max-w-[400px] rounded-lg"
+      className="w-full max-w-[400px] rounded-lg p-5 shadow-md"
       onSubmit={submitOtpHandler}
     >
       <TextField
@@ -28,7 +28,7 @@ const SendOTPForm = ({ sendOtpHandler, isPending, register, inputError }) => {
         errors={inputError}
       />
       {isPending ? (
-        <div className="text-center mt-5">
+        <div className="mt-5 text-center">
           <Loading />
         </div>
       ) : (

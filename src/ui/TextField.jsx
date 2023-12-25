@@ -16,7 +16,7 @@ const TextField = ({
     <div className="flex flex-col">
       <label
         htmlFor={id}
-        className="mb-2 text-secondary-700 text-sm flex items-center gap-1"
+        className="mb-2 flex items-center gap-1 text-sm text-secondary-700"
       >
         {label}
         {required && <span className="text-error">*</span>}
@@ -31,7 +31,7 @@ const TextField = ({
         {...props}
       />
       {errors?.[name] && (
-        <span className="text-xs text-error mt-1">{errors[name]?.message}</span>
+        <span className="mt-1 text-xs text-error">{errors[name]?.message}</span>
       )}
       {/* {errors[name] && console.log(register(name))} */}
     </div>
@@ -47,7 +47,7 @@ const TextField = ({
         {...props}
       />
       {errors?.[name] && (
-        <span className="text-xs text-error block">
+        <span className="block text-xs text-error">
           {errors[name]?.message}
         </span>
       )}

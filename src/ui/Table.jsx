@@ -1,23 +1,23 @@
 const Table = ({ children }) => {
-    return (
-        <div className="rounded-lg overflow-x-auto">
-            <table className="text-secondary-700 w-full">{children}</table>
-        </div>
-    );
+  return (
+    <div className="overflow-x-auto rounded-lg">
+      <table className="w-full text-secondary-700">{children}</table>
+    </div>
+  );
 };
 
 export default Table;
 
 const TableHeader = ({ children }) => {
-    return <thead>{children}</thead>;
+  return <thead>{children}</thead>;
 };
 
 const TableBody = ({ children }) => {
-    return <tbody>{children}</tbody>;
+  return <tbody>{children}</tbody>;
 };
 
 const TableRow = ({ children, ...props }) => {
-    return <tr {...props}>{children}</tr>;
+  return <tr {...props}>{children}</tr>;
 };
 
 Table.Header = TableHeader;

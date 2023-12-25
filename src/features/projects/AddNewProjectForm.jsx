@@ -16,7 +16,7 @@ const AddNewProjectForm = () => {
 
   return (
     <form
-      className="flex flex-col sm:w-[500px] gap-y-3"
+      className="flex flex-col gap-y-3 sm:w-[500px]"
       onSubmit={handleSubmit(submitFormHandler)}
     >
       <TextField

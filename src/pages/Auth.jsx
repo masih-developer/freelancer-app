@@ -1,11 +1,11 @@
 import AuthContainer from "../features/authentication/AuthContainer";
 
 const Auth = () => {
-    return (
-        <>
-            <AuthContainer />
-        </>
-    );
+  return (
+    <>
+      <AuthContainer />
+    </>
+  );
 };
 
 export default Auth;

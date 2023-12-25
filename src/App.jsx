@@ -10,33 +10,30 @@ import Projects from "./pages/Projects";
 import Project from "./pages/Project";
 
 const App = () => {
-    return (
-        <>
-            <Routes>
-                <Route path="/auth" element={<Auth />} />
-                <Route path="/complete-profile" element={<CompleteProfile />} />
-                <Route path="" element={<MainLayout />}>
-                    <Route index element={""} />
-                </Route>
-                <Route path="/owner" element={<OwnerLayout />}>
-                    <Route
-                        index
-                        element={<Navigate to="/owner/dashboard" replace />}
-                    />
-                    <Route path="dashboard" element={<Owner />} />
-                    <Route path="projects" element={<Projects />} />
-                    <Route path="project" element={<Project />} />
-                </Route>
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-            <Toaster
-                toastOptions={{
-                    duration: 3000,
-                    className: "w-auto max-w-screen-sm",
-                }}
-            />
-        </>
-    );
+  return (
+    <>
+      <Routes>
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/complete-profile" element={<CompleteProfile />} />
+        <Route path="" element={<MainLayout />}>
+          <Route index element={""} />
+        </Route>
+        <Route path="/owner" element={<OwnerLayout />}>
+          <Route index element={<Navigate to="/owner/dashboard" replace />} />
+          <Route path="dashboard" element={<Owner />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="project" element={<Project />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Toaster
+        toastOptions={{
+          duration: 3000,
+          className: "w-auto max-w-screen-sm",
+        }}
+      />
+    </>
+  );
 };
 
 export default App;
