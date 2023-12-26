@@ -1,5 +1,8 @@
 import { useForm } from "react-hook-form";
 import TextField from "../../ui/TextField";
+import RHFSelect from "../../ui/RHFSelect";
+import { TagsInput } from "react-tag-input-component";
+import { useState } from "react";
 
 const REQUIRED_FIELD_TEXT = "پر کردن این فیلد الزامیست.";
 
@@ -10,58 +13,72 @@ const AddNewProjectForm = () => {
     handleSubmit,
   } = useForm();
 
+  const [tage, setTags] = useState([]);
+
   const submitFormHandler = (data) => {
     console.log(data);
   };
 
   return (
-    <form
-      className="flex flex-col gap-y-3 sm:w-[500px]"
-      onSubmit={handleSubmit(submitFormHandler)}
-    >
-      <TextField
-        label="عنوان پروژه"
-        name="title"
-        register={register}
-        required
-        validationSchema={{
-          required: REQUIRED_FIELD_TEXT,
-          minLength: {
-            value: 5,
-            message: "عنوان پروژه می بایست حداقل 5 کاراکتر باشد.",
-          },
-        }}
-        errors={errors}
-      />
-      <TextField
-        label="توضیحات"
-        name="description"
-        register={register}
-        required
-        validationSchema={{
-          required: REQUIRED_FIELD_TEXT,
-          minLength: {
-            value: 10,
-            message: "توضیحات پروژه می بایست حداقل 10 کاراکتر باشد.",
-          },
-        }}
-        errors={errors}
-      />
-      <TextField
-        label="قیمت(تومان)"
-        name="budget"
-        register={register}
-        required
-        validationSchema={{
-          required: REQUIRED_FIELD_TEXT,
-          pattern: {
-            value: /^[1-9]\d{4,9}?$/i,
-            message: "قیمت پروژه می بایست حداقل 10,000 تومان باشد.",
-          },
-        }}
-        errors={errors}
-      />
-      <button type="submit" className="app-btn">
+    <form className="sm:w-[500px]" onSubmit={handleSubmit(submitFormHandler)}>
+      <div className="flex flex-col gap-y-3">
+        <TextField
+          label="عنوان پروژه"
+          name="title"
+          register={register}
+          required
+          validationSchema={{
+            required: REQUIRED_FIELD_TEXT,
+            minLength: {
+              value: 5,
+              message: "عنوان پروژه می بایست حداقل 5 کاراکتر باشد.",
+            },
+          }}
+          errors={errors}
+        />
+        <TextField
+          label="توضیحات"
+          name="description"
+          register={register}
+          required
+          validationSchema={{
+            required: REQUIRED_FIELD_TEXT,
+            minLength: {
+              value: 10,
+              message: "توضیحات پروژه می بایست حداقل 10 کاراکتر باشد.",
+            },
+          }}
+          errors={errors}
+        />
+        <TextField
+          label="قیمت(تومان)"
+          name="budget"
+          register={register}
+          required
+          validationSchema={{
+            required: REQUIRED_FIELD_TEXT,
+            pattern: {
+              value: /^[1-9]\d{4,9}?$/i,
+              message: "قیمت پروژه می بایست حداقل 10,000 تومان باشد.",
+            },
+          }}
+          errors={errors}
+        />
+        <RHFSelect
+          register={register}
+          name="category"
+          label="دسته بندی"
+          options={[]}
+          required
+        />
+        <TagsInput
+          value={tage}
+          onChange={setTags}
+          name="tags"
+          classNames={{}}
+        />
+      </div>
+      <button type="submit" className="app-btn mt-5">
         تایید
       </button>
     </form>
