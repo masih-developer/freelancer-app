@@ -1,4 +1,3 @@
-import RadioInput from "../../ui/RadioInput";
 import TextField from "../../ui/TextField";
 import { useMutation } from "@tanstack/react-query";
 import { completeUserProfileApi } from "../../services/authService";
@@ -6,6 +5,7 @@ import toast from "react-hot-toast";
 import Loading from "../../ui/Loading";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import RadioInputGroup from "../../ui/RadioInputGroup";
 
 const CompleteProfileForm = () => {
   const navigate = useNavigate();
@@ -78,35 +78,19 @@ const CompleteProfileForm = () => {
           }}
           errors={formState.errors}
         />
-        <div className="flex flex-col">
-          <div className="flex items-center justify-center gap-x-8">
-            <RadioInput
-              label="کارفرما"
-              value="OWNER"
-              name="role"
-              id="OWNER"
-              className="form-radio h-4 w-4 cursor-pointer text-primary-900 focus:ring-primary-900"
-              register={register}
-              checked={watch("role") === "OWNER"}
-              validationSchema={{ required: "مشخص کردن نقشِ فرد الزامیست." }}
-            />
-            <RadioInput
-              label="فریلنسر"
-              value="FREELANCER"
-              name="role"
-              id="FREELANCER"
-              className="form-radio h-4 w-4 cursor-pointer text-primary-900 focus:ring-primary-900"
-              register={register}
-              checked={watch("role") === "FREELANCER"}
-              validationSchema={{ required: "مشخص کردن نقشِ فرد الزامیست." }}
-            />
-          </div>
-          {formState.errors?.["role"] && (
-            <p className="mt-1 text-center text-xs text-error">
-              {formState.errors?.["role"].message}
-            </p>
-          )}
-        </div>
+        <RadioInputGroup
+          register={register}
+          watch={watch}
+          errors={formState.errors}
+          configs={{
+            name: "role",
+            validationSchema: { required: "مشخص کردن نقشِ فرد الزامیست." },
+            options: [
+              { label: "کارفرما", value: "OWNER" },
+              { label: "فریلنسر", value: "FREELANCER" },
+            ],
+          }}
+        />
         {isPending ? (
           <div className="mt-2 text-center">
             <Loading />
