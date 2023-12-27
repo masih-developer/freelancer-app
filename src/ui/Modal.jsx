@@ -5,8 +5,8 @@ const Modal = ({ open, onClose, children, title }) => {
   return createPortal(
     <div
       onClick={onClose}
-      className={`fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm transition-colors ${
-        open ? "visible bg-black/30" : "invisible"
+      className={`fixed inset-0 z-50 flex items-center justify-center transition-colors ${
+        open ? "visible bg-black/40" : "invisible"
       }`}
     >
       <div
