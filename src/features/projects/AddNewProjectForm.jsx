@@ -42,6 +42,8 @@ const AddNewProjectForm = () => {
         <TextField
           label="توضیحات"
           name="description"
+          type="textarea"
+          minHeight={100}
           register={register}
           required
           validationSchema={{
@@ -73,6 +75,10 @@ const AddNewProjectForm = () => {
           label="دسته بندی"
           options={categories}
           required
+          errors={errors}
+          validationSchema={{
+            required: REQUIRED_FIELD_TEXT,
+          }}
         />
         <TagsInput
           value={tage}
