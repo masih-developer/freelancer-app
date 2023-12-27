@@ -1,19 +1,20 @@
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import TextField from "../../ui/TextField";
 import RHFSelect from "../../ui/RHFSelect";
 import { TagsInput } from "react-tag-input-component";
 import { useState } from "react";
+import DatePickerField from "../../ui/DatePickerField";
 
 const REQUIRED_FIELD_TEXT = "پر کردن این فیلد الزامیست.";
 
 const AddNewProjectForm = () => {
+  const [tage, setTags] = useState([]);
+  const [date, setDate] = useState(new Date());
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-
-  const [tage, setTags] = useState([]);
 
   const submitFormHandler = (data) => {
     console.log(data);
@@ -76,6 +77,12 @@ const AddNewProjectForm = () => {
           onChange={setTags}
           name="tags"
           classNames={{}}
+        />
+        <DatePickerField
+          label="ددلاین"
+          date={date}
+          setDate={setDate}
+          required
         />
       </div>
       <button type="submit" className="app-btn mt-5">
