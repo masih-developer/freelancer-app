@@ -1,4 +1,12 @@
-const RHFSelect = ({ register, name, label, options, required }) => {
+const RHFSelect = ({
+  register,
+  name,
+  label,
+  options,
+  validationSchema,
+  errors,
+  required,
+}) => {
   return (
     <div>
       <label
@@ -8,13 +16,23 @@ const RHFSelect = ({ register, name, label, options, required }) => {
         {label}
         {required && <span className="text-error">*</span>}
       </label>
-      <select {...register(name)} id={name} className="app-input">
+      <select
+        {...register(name, validationSchema)}
+        id={name}
+        className="app-input"
+      >
+        <option value="">انتخاب کنید</option>
         {options.map((option) => (
           <option key={option.value} value={option.value} className="">
             {option.label}
           </option>
         ))}
       </select>
+      {errors?.[name] && (
+        <span className="mt-1 block text-xs text-error">
+          {errors[name]?.message}
+        </span>
+      )}
     </div>
   );
 };
