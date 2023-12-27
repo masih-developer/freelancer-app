@@ -9,23 +9,27 @@ const TextField = ({
   autoComplete = "off",
   required,
   validationSchema = {},
+  height,
+  minHeight = 41.6,
   errors,
   ...props
 }) => {
-  return label ? (
+  return type === "text" ? (
     <div className="flex flex-col">
-      <label
-        htmlFor={id}
-        className="mb-2 flex items-center gap-1 text-sm text-secondary-700"
-      >
-        {label}
-        {required && <span className="text-error">*</span>}
-      </label>
+      {label && (
+        <label
+          htmlFor={id}
+          className="mb-2 flex items-center gap-1 text-sm text-secondary-700"
+        >
+          {label}
+          {required && <span className="text-error">*</span>}
+        </label>
+      )}
       <input
         {...register(name, validationSchema)}
         type={type}
         id={id}
-        className={`app-input ${className}`}
+        className={`app-input${className ? " " + className : ""}`}
         placeholder={placeholder}
         autoComplete={autoComplete}
         {...props}
@@ -33,25 +37,32 @@ const TextField = ({
       {errors?.[name] && (
         <span className="mt-1 text-xs text-error">{errors[name]?.message}</span>
       )}
-      {/* {errors[name] && console.log(register(name))} */}
     </div>
   ) : (
-    <>
-      <input
+    <div className="flex flex-col">
+      {label && (
+        <label
+          htmlFor={id}
+          className="mb-2 flex items-center gap-1 text-sm text-secondary-700"
+        >
+          {label}
+          {required && <span className="text-error">*</span>}
+        </label>
+      )}
+      <textarea
         {...register(name, validationSchema)}
-        type={type}
         id={id}
-        className={`app-input ${className}`}
+        className={`app-input min-h-[${minHeight}px] h-[${
+          height ? height : minHeight
+        }px]${className ? " " + className : ""}`}
         placeholder={placeholder}
         autoComplete={autoComplete}
         {...props}
       />
       {errors?.[name] && (
-        <span className="block text-xs text-error">
-          {errors[name]?.message}
-        </span>
+        <span className="mt-1 text-xs text-error">{errors[name]?.message}</span>
       )}
-    </>
+    </div>
   );
 };
 
