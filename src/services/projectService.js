@@ -9,3 +9,8 @@ export const removeProjectApi = async (id) => {
   const { data } = await mainRequest.delete(`/project/${id}`);
   return data.data;
 };
+
+export const addNewProjectApi = async (project) => {
+  const { data } = mainRequest.post("/project/add", project);
+  return data.data;
+};
