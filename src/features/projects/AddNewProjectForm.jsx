@@ -1,9 +1,10 @@
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import TextField from "../../ui/TextField";
 import RHFSelect from "../../ui/RHFSelect";
 import { TagsInput } from "react-tag-input-component";
 import { useState } from "react";
 import DatePickerField from "../../ui/DatePickerField";
+import useCategories from "../../hooks/useCategories";
 
 const REQUIRED_FIELD_TEXT = "پر کردن این فیلد الزامیست.";
 
@@ -15,6 +16,7 @@ const AddNewProjectForm = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const { categories } = useCategories();
 
   const submitFormHandler = (data) => {
     console.log(data);
@@ -69,7 +71,7 @@ const AddNewProjectForm = () => {
           register={register}
           name="category"
           label="دسته بندی"
-          options={[]}
+          options={categories}
           required
         />
         <TagsInput
