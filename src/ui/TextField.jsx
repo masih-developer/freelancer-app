@@ -10,7 +10,6 @@ const TextField = ({
   required,
   validationSchema = {},
   height,
-  minHeight = 41.6,
   errors,
   ...props
 }) => {
@@ -52,9 +51,8 @@ const TextField = ({
       <textarea
         {...register(name, validationSchema)}
         id={id}
-        className={`app-input min-h-[${minHeight}px] h-[${
-          height ? height : minHeight
-        }px]${className ? " " + className : ""}`}
+        className={`app-input min-h-[41.6px]`}
+        style={{ height: height ? height + "px" : "41.6px" }}
         placeholder={placeholder}
         autoComplete={autoComplete}
         {...props}
