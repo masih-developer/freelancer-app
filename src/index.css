@@ -62,6 +62,12 @@
     @apply rounded-lg bg-secondary-400;
   }
 
+  *,
+  *::before,
+  *::after {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   /* reset styles */
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
@@ -125,7 +131,7 @@
 
 @layer components {
   .app-input {
-    @apply block w-full rounded-lg border border-gray-200 bg-gray-50 p-2 text-base text-secondary-900 outline-none duration-300 ease-in-out focus:border-primary-500 focus:shadow-md focus:shadow-primary-200;
+    @apply block w-full rounded-lg border border-gray-200 bg-gray-50 p-2 text-base text-secondary-900 outline-none transition ease-in-out focus:border-primary-500 focus:shadow-md focus:shadow-primary-200;
   }
 
   .app-btn {
