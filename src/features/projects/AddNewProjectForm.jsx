@@ -43,7 +43,7 @@ const AddNewProjectForm = () => {
           label="توضیحات"
           name="description"
           type="textarea"
-          minHeight={100}
+          height={100}
           register={register}
           required
           validationSchema={{
