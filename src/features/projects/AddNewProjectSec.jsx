@@ -21,7 +21,7 @@ const AddNewProjectSec = () => {
         open={isOpenForm}
         onClose={() => setIsOpenForm(false)}
       >
-        <AddNewProjectForm />
+        <AddNewProjectForm onClose={() => setIsOpenForm(false)} />
       </Modal>
     </div>
   );

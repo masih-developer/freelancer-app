@@ -5,21 +5,33 @@ import { TagsInput } from "react-tag-input-component";
 import { useState } from "react";
 import DatePickerField from "../../ui/DatePickerField";
 import useCategories from "../../hooks/useCategories";
+import useNewProject from "./useNewProject";
+import Loading from "../../ui/Loading";
 
 const REQUIRED_FIELD_TEXT = "پر کردن این فیلد الزامیست.";
 
-const AddNewProjectForm = () => {
-  const [tage, setTags] = useState([]);
+const AddNewProjectForm = ({ onClose }) => {
+  const [tags, setTags] = useState([]);
   const [date, setDate] = useState(new Date());
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
+    reset,
+  } = useForm({
+    defaultValues: { tags: [] },
+  });
   const { categories } = useCategories();
+  const { createNewProject, isCreating } = useNewProject();
 
   const submitFormHandler = (data) => {
-    console.log(data);
+    const finalData = { ...data, tags, deadline: new Date(date).toISOString() };
+    createNewProject(finalData, {
+      onSuccess: () => {
+        onClose();
+        reset();
+      },
+    });
   };
 
   return (
@@ -80,12 +92,7 @@ const AddNewProjectForm = () => {
             required: REQUIRED_FIELD_TEXT,
           }}
         />
-        <TagsInput
-          value={tage}
-          onChange={setTags}
-          name="tags"
-          classNames={{}}
-        />
+        <TagsInput value={tags} onChange={setTags} />
         <DatePickerField
           label="ددلاین"
           date={date}
@@ -93,9 +100,15 @@ const AddNewProjectForm = () => {
           required
         />
       </div>
-      <button type="submit" className="app-btn mt-5">
-        تایید
-      </button>
+      {isCreating ? (
+        <div className="mt-5 text-center">
+          <Loading />
+        </div>
+      ) : (
+        <button type="submit" className="app-btn mt-5">
+          تایید
+        </button>
+      )}
     </form>
   );
 };
