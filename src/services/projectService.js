@@ -11,6 +11,6 @@ export const removeProjectApi = async (id) => {
 };
 
 export const addNewProjectApi = async (project) => {
-  const { data } = mainRequest.post("/project/add", project);
+  const { data } = await mainRequest.post("/project/add", project);
   return data.data;
 };
