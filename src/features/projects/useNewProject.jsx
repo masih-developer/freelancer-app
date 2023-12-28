@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 const useNewProject = () => {
   const queryClient = useQueryClient();
 
-  useMutation({
+  const { mutate: createNewProject, isPending: isCreating } = useMutation({
     mutationFn: addNewProjectApi,
     onSuccess: ({ message }) => {
       toast.success(message);
@@ -17,6 +17,8 @@ const useNewProject = () => {
       toast.error(err?.response?.data?.message || err.message);
     },
   });
+
+  return { createNewProject, isCreating };
 };
 
 export default useNewProject;
