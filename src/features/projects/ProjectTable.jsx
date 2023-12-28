@@ -97,11 +97,7 @@ const ProjectTable = () => {
                     className="text-xl text-blue-500"
                     onClick={() => {
                       setIsEditOpen(true);
-                      setProjectIden((prev) => ({
-                        ...prev,
-                        title: project.title,
-                        id: project._id,
-                      }));
+                      setProjectIden(project);
                     }}
                   >
                     <TbPencilMinus />
@@ -110,11 +106,7 @@ const ProjectTable = () => {
                     className="text-xl text-red-500"
                     onClick={() => {
                       setIsDeleteOpen(true);
-                      setProjectIden((prev) => ({
-                        ...prev,
-                        title: project.title,
-                        id: project._id,
-                      }));
+                      setProjectIden(project);
                     }}
                   >
                     <HiOutlineTrash />
