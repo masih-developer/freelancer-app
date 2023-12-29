@@ -73,7 +73,7 @@ const ProjectTable = () => {
               <td>{toPersianNumbersWithComma(project.budget)}</td>
               <td>{toLocaleShortDate(project.deadline)}</td>
               <td>
-                <div className="mx-auto flex max-w-[200px] flex-wrap items-center justify-center gap-2 rounded-lg p-2 shadow-sm ring-1 ring-secondary-100">
+                <div className="mx-auto flex max-h-[80px] max-w-[200px] flex-wrap items-center justify-center gap-2 overflow-y-auto rounded-lg p-2 shadow-sm ring-1 ring-secondary-100">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
