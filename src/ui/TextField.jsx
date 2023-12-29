@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+
 const TextField = ({
   register,
   name,
@@ -9,10 +11,20 @@ const TextField = ({
   autoComplete = "off",
   required,
   validationSchema = {},
-  height,
   errors,
   ...props
 }) => {
+  const textareaRef = useRef(null);
+  const [textareaVal, setTextareaVal] = useState("");
+
+  useEffect(() => {
+    if (textareaRef?.current) {
+      const textAreaElem = textareaRef.current.children[1];
+      textAreaElem.style.height = "0px";
+      textAreaElem.style.height = textAreaElem.scrollHeight + 2 + "px";
+    }
+  }, [textareaVal]);
+
   return type === "text" ? (
     <div className="flex flex-col">
       {label && (
@@ -38,7 +50,7 @@ const TextField = ({
       )}
     </div>
   ) : (
-    <div className="flex flex-col">
+    <div className="flex flex-col" ref={textareaRef}>
       {label && (
         <label
           htmlFor={id}
@@ -50,9 +62,12 @@ const TextField = ({
       )}
       <textarea
         {...register(name, validationSchema)}
+        onChange={(e) => {
+          register(name, validationSchema).onChange(e);
+          setTextareaVal(e.target.value);
+        }}
         id={id}
         className={`app-input min-h-[41.6px]`}
-        style={{ height: height ? height + "px" : "41.6px" }}
         placeholder={placeholder}
         autoComplete={autoComplete}
         {...props}
