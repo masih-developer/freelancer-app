@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getCategoryApi } from "../services/CategoryService";
 
 const useCategories = () => {
-  const { data, ...rest } = useQuery({
+  const { data, isLoading: isLoadingCategories } = useQuery({
     queryKey: ["categories"],
     queryFn: getCategoryApi,
   });
@@ -19,7 +19,7 @@ const useCategories = () => {
     value: item.englishTitle,
   }));
 
-  return { categories, transformedCategories, ...rest };
+  return { categories, transformedCategories, isLoadingCategories };
 };
 
 export default useCategories;

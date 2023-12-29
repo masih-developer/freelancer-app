@@ -5,6 +5,7 @@ const RHFSelect = ({
   options,
   validationSchema,
   errors,
+  loading,
   required,
 }) => {
   return (
@@ -16,18 +17,24 @@ const RHFSelect = ({
         {label}
         {required && <span className="text-error">*</span>}
       </label>
-      <select
-        {...register(name, validationSchema)}
-        id={name}
-        className="app-input"
-      >
-        <option value="">انتخاب کنید</option>
-        {options.map((option) => (
-          <option key={option.value} value={option.value} className="">
-            {option.label}
-          </option>
-        ))}
-      </select>
+      {loading ? (
+        <select className="app-input">
+          <option value="">انتخاب کنید</option>
+        </select>
+      ) : (
+        <select
+          {...register(name, validationSchema)}
+          id={name}
+          className="app-input"
+        >
+          <option value="">انتخاب کنید</option>
+          {options.map((option) => (
+            <option key={option.value} value={option.value} className="">
+              {option.label}
+            </option>
+          ))}
+        </select>
+      )}
       {errors?.[name] && (
         <span className="mt-1 block text-xs text-error">
           {errors[name]?.message}
