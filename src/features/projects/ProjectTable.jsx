@@ -12,6 +12,7 @@ import ConfirmDelete from "../../ui/ConfirmDelete";
 import toast from "react-hot-toast";
 import useRemoveProject from "./useRemoveProject";
 import AddNewProjectForm from "./AddNewProjectForm";
+import ToggleProjectStatus from "./ToggleProjectStatus";
 
 const ProjectTable = () => {
   const { data, isLoading } = useOwnerProjects();
@@ -86,11 +87,7 @@ const ProjectTable = () => {
               </td>
               <td>{project?.freelancer?.name || "-"}</td>
               <td>
-                {project.status === "OPEN" ? (
-                  <span className="badge badge--success">باز</span>
-                ) : (
-                  <span className="badge badge--error">بسته</span>
-                )}
+                <ToggleProjectStatus project={project} />
               </td>
               <td>
                 <div className="flex items-center justify-center gap-x-5">
