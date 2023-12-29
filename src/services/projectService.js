@@ -14,3 +14,8 @@ export const addNewProjectApi = async (project) => {
   const { data } = await mainRequest.post("/project/add", project);
   return data.data;
 };
+
+export const editProjectApi = async ({ id, newProject }) => {
+  const { data } = await mainRequest.patch(`/project/update/${id}`, newProject);
+  return data.data;
+};
