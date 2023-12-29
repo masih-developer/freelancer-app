@@ -4,7 +4,7 @@ import toLocaleShortDate from "../../utils/toLocaleShortDate";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
 import useOwnerProjects from "./useOwnerProjects";
 import Modal from "../../ui/Modal";
-import { HiOutlineTrash } from "react-icons/hi";
+import { HiEye, HiOutlineTrash } from "react-icons/hi";
 import { TbPencilMinus } from "react-icons/tb";
 import Table from "../../ui/Table";
 import truncateText from "../../utils/truncateText";
@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 import useRemoveProject from "./useRemoveProject";
 import AddNewProjectForm from "./AddNewProjectForm";
 import ToggleProjectStatus from "./ToggleProjectStatus";
+import { Link } from "react-router-dom";
 
 const ProjectTable = () => {
   const { data, isLoading } = useOwnerProjects();
@@ -61,6 +62,7 @@ const ProjectTable = () => {
             <th>فریلنسر</th>
             <th>وضعیت</th>
             <th>عملیات</th>
+            <th>درخواست ها</th>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -110,6 +112,14 @@ const ProjectTable = () => {
                     <HiOutlineTrash />
                   </button>
                 </div>
+              </td>
+              <td>
+                <Link
+                  to={project._id}
+                  className="flex items-center justify-center text-xl text-primary-900"
+                >
+                  <HiEye />
+                </Link>
               </td>
             </Table.Row>
           ))}
