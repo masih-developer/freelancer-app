@@ -7,6 +7,7 @@ import DatePickerField from "../../ui/DatePickerField";
 import useCategories from "../../hooks/useCategories";
 import useNewProject from "./useNewProject";
 import Loading from "../../ui/Loading";
+import useEditProject from "./useEditProject";
 
 const REQUIRED_FIELD_TEXT = "پر کردن این فیلد الزامیست.";
 
@@ -29,24 +30,42 @@ const AddNewProjectForm = ({ projectToEdit = {}, onClose }) => {
   }
 
   const [tags, setTags] = useState(editedTags || []);
-  const [date, setDate] = useState(new Date(deadline || null));
+  const [date, setDate] = useState(deadline ? new Date(deadline) : new Date());
+
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm({ defaultValues: editSessionValues });
-  const { categories } = useCategories();
+  } = useForm({
+    defaultValues: editSessionValues,
+  });
+  const { categories, isLoadingCategories } = useCategories();
   const { createNewProject, isCreating } = useNewProject();
+  const { editProject, isEditing } = useEditProject();
 
   const submitFormHandler = (data) => {
-    const finalData = { ...data, tags, deadline: new Date(date).toISOString() };
-    createNewProject(finalData, {
-      onSuccess: () => {
-        onClose();
-        reset();
-      },
-    });
+    const finalData = {
+      ...data,
+      tags,
+      deadline: new Date(date).toISOString(),
+    };
+    if (isEditSession) {
+      const editData = { id: editId, newProject: finalData };
+      editProject(editData, {
+        onSuccess: () => {
+          onClose();
+          reset();
+        },
+      });
+    } else {
+      createNewProject(finalData, {
+        onSuccess: () => {
+          onClose();
+          reset();
+        },
+      });
+    }
   };
 
   return (
@@ -70,7 +89,6 @@ const AddNewProjectForm = ({ projectToEdit = {}, onClose }) => {
           label="توضیحات"
           name="description"
           type="textarea"
-          height={100}
           register={register}
           required
           validationSchema={{
@@ -99,6 +117,7 @@ const AddNewProjectForm = ({ projectToEdit = {}, onClose }) => {
         <RHFSelect
           register={register}
           name="category"
+          loading={isLoadingCategories}
           label="دسته بندی"
           options={categories}
           required
@@ -115,7 +134,7 @@ const AddNewProjectForm = ({ projectToEdit = {}, onClose }) => {
           required
         />
       </div>
-      {isCreating ? (
+      {isCreating || isEditing ? (
         <div className="mt-5 text-center">
           <Loading />
         </div>
