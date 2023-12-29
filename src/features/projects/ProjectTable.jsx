@@ -11,6 +11,7 @@ import truncateText from "../../utils/truncateText";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import toast from "react-hot-toast";
 import useRemoveProject from "./useRemoveProject";
+import AddNewProjectForm from "./AddNewProjectForm";
 
 const ProjectTable = () => {
   const { data, isLoading } = useOwnerProjects();
@@ -118,10 +119,15 @@ const ProjectTable = () => {
         </Table.Body>
       </Table>
       {/* edit modal */}
-      <Modal open={isEditOpen} onClose={() => setIsEditOpen(false)}>
-        <div className="">
-          <h3 className="text-lg font-medium">ویرایش {projectIden.title}؟</h3>
-        </div>
+      <Modal
+        open={isEditOpen}
+        title="ویرایش پروژه"
+        onClose={() => setIsEditOpen(false)}
+      >
+        <AddNewProjectForm
+          projectToEdit={projectIden}
+          onClose={() => setIsEditOpen(false)}
+        />
       </Modal>
       {/* delete modal */}
       <Modal

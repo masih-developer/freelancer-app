@@ -10,17 +10,32 @@ import Loading from "../../ui/Loading";
 
 const REQUIRED_FIELD_TEXT = "پر کردن این فیلد الزامیست.";
 
-const AddNewProjectForm = ({ onClose }) => {
-  const [tags, setTags] = useState([]);
-  const [date, setDate] = useState(new Date());
+const AddNewProjectForm = ({ projectToEdit = {}, onClose }) => {
+  const { _id: editId } = projectToEdit;
+  const isEditSession = Boolean(editId);
+
+  const {
+    title,
+    description,
+    budget,
+    category,
+    deadline,
+    tags: editedTags,
+  } = projectToEdit;
+
+  let editSessionValues = {};
+  if (isEditSession) {
+    editSessionValues = { title, description, budget, category: category._id };
+  }
+
+  const [tags, setTags] = useState(editedTags || []);
+  const [date, setDate] = useState(new Date(deadline || null));
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm({
-    defaultValues: { tags: [] },
-  });
+  } = useForm({ defaultValues: editSessionValues });
   const { categories } = useCategories();
   const { createNewProject, isCreating } = useNewProject();
 

@@ -2,6 +2,8 @@ import { createPortal } from "react-dom";
 import { HiOutlineX } from "react-icons/hi";
 
 const Modal = ({ open, onClose, children, title }) => {
+  if (!open) return null;
+
   return createPortal(
     <div
       onClick={onClose}
