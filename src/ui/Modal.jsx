@@ -2,7 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { HiOutlineX } from "react-icons/hi";
 
-const Modal = ({ open, onClose, children, title }) => {
+const Modal = ({ title, children, open, onClose }) => {
   return (
     <Transition show={open} as={Fragment}>
       <Dialog open={open} onClose={onClose}>
