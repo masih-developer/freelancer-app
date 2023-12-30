@@ -1,5 +1,9 @@
 import { useForm } from "react-hook-form";
 import RHFSelect from "../../ui/RHFSelect";
+import useChangeProposalStatus from "./useChangeProposalStatus";
+import Loading from "../../ui/Loading";
+import { useQueryClient } from "@tanstack/react-query";
+import { useParams } from "react-router-dom";
 
 const options = [
   { label: "رد شده", value: 0 },
@@ -8,14 +12,27 @@ const options = [
 ];
 
 const ChangeProposalStatus = ({ proposalId, onClose }) => {
+  const { projectId } = useParams();
   const {
     handleSubmit,
     register,
     formState: { errors },
+    reset,
   } = useForm();
+  const { changingProposalStatus, isChanging } = useChangeProposalStatus();
+  const queryClient = useQueryClient();
 
   const submitFormHandler = (data) => {
-    console.log(data);
+    changingProposalStatus(
+      { id: proposalId, proposal: data },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries(["project", projectId]);
+          onClose();
+          reset();
+        },
+      },
+    );
   };
 
   return (
@@ -29,7 +46,13 @@ const ChangeProposalStatus = ({ proposalId, onClose }) => {
         required
         options={options}
       />
-      <button className="app-btn mt-5">ثبت</button>
+      {isChanging ? (
+        <div className="mt-5 text-center">
+          <Loading />
+        </div>
+      ) : (
+        <button className="app-btn mt-5">ثبت</button>
+      )}
     </form>
   );
 };
