@@ -24,3 +24,8 @@ export const toggleProjectStatusApi = async ({ id, project }) => {
   const { data } = await mainRequest.patch(`/project/${id}`, project);
   return data.data;
 };
+
+export const getProjectApi = async (id) => {
+  const { data } = await mainRequest.get(`/project/${id}`);
+  return data.data;
+};

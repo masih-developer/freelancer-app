@@ -18,12 +18,16 @@ const App = () => {
         <Route path="" element={<MainLayout />}>
           <Route index element={""} />
         </Route>
+        {/* owner Routes */}
         <Route path="/owner" element={<OwnerLayout />}>
           <Route index element={<Navigate to="/owner/dashboard" replace />} />
           <Route path="dashboard" element={<Owner />} />
-          <Route path="projects" element={<Projects />} />
-          <Route path="project" element={<Project />} />
+          <Route path="projects">
+            <Route index element={<Projects />} />
+            <Route path=":projectId" element={<Project />} />
+          </Route>
         </Route>
+        {/* not found Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster
