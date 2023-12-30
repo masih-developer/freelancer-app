@@ -1,11 +1,11 @@
 import AddNewProjectSec from "../features/projects/AddNewProjectSec";
-import ProjectTable from "../features/projects/ProjectTable";
+import ProjectsTable from "../features/projects/ProjectsTable";
 
 const Projects = () => {
   return (
     <div>
       <AddNewProjectSec />
-      <ProjectTable />
+      <ProjectsTable />
     </div>
   );
 };
