@@ -14,5 +14,10 @@ export const completeUserProfileApi = (data) => {
 
 export const getUserApi = async () => {
   const { data } = await mainRequest.get("/user/profile");
-  return data;
+  return data.data;
+};
+
+export const logoutApi = async () => {
+  const { data } = await mainRequest.post("/user/logout");
+  return data.data;
 };
