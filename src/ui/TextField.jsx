@@ -30,7 +30,7 @@ const TextField = ({
       {label && (
         <label
           htmlFor={id}
-          className="mb-2 flex items-center gap-1 text-sm text-secondary-700"
+          className="mb-2 flex items-center gap-1 text-sm text-secondary-900"
         >
           {label}
           {required && <span className="text-error">*</span>}

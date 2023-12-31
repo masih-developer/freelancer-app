@@ -3,48 +3,49 @@
 @tailwind utilities;
 
 @layer base {
-  :root,
-  :root .light-mode {
-    --background-app-rgb: 255 255 255;
-    --color-primary-900: 74 109 255;
-    --color-primary-800: 92 124 255;
-    --color-primary-700: 110 138 255;
-    --color-primary-600: 128 153 255;
-    --color-primary-500: 146 167 255;
-    --color-primary-400: 164 182 255;
-    --color-primary-300: 183 197 255;
-    --color-primary-200: 201 211 255;
-    --color-primary-100: 219 226 255;
-    --color-primary-50: 228 233 255;
-    --color-secondary-900: 17 24 39;
-    --color-secondary-800: 31 41 55;
-    --color-secondary-700: 55 65 81;
-    --color-secondary-600: 75 85 99;
-    --color-secondary-500: 107 114 128;
-    --color-secondary-400: 156 163 175;
-    --color-secondary-300: 209 213 219;
-    --color-secondary-200: 229 231 235;
-    --color-secondary-100: 243 244 246;
-    --color-secondary-50: 249 250 251;
-    --color-secondary-0: 255 255 255;
-    --color-success: 0 192 115;
-    --color-warning: 255 153 0;
-    --color-error: 239 68 68;
-  }
-
-  :root .dark-mode {
-    --color-secondary-900: 249 250 251;
-    --color-secondary-800: 243 244 246;
-    --color-secondary-700: 229 231 235;
-    --color-secondary-600: 209 213 219;
-    --color-secondary-500: 156 163 175;
-    --color-secondary-400: 107 114 128;
-    --color-secondary-300: 75 85 99;
-    --color-secondary-200: 55 65 81;
-    --color-secondary-100: 31 41 55;
-    --color-secondary-50: 17 24 39;
-    --color-secondary-0: 24 33 47;
-    --backdrop-color: 0 0 0;
+  :root {
+    &,
+    &.light-mode {
+      --background-app-rgb: 255 255 255;
+      --color-primary-900: 74 109 255;
+      --color-primary-800: 92 124 255;
+      --color-primary-700: 110 138 255;
+      --color-primary-600: 128 153 255;
+      --color-primary-500: 146 167 255;
+      --color-primary-400: 164 182 255;
+      --color-primary-300: 183 197 255;
+      --color-primary-200: 201 211 255;
+      --color-primary-100: 219 226 255;
+      --color-primary-50: 228 233 255;
+      --color-secondary-900: 17 24 39;
+      --color-secondary-800: 31 41 55;
+      --color-secondary-700: 55 65 81;
+      --color-secondary-600: 75 85 99;
+      --color-secondary-500: 107 114 128;
+      --color-secondary-400: 156 163 175;
+      --color-secondary-300: 209 213 219;
+      --color-secondary-200: 229 231 235;
+      --color-secondary-100: 243 244 246;
+      --color-secondary-50: 249 250 251;
+      --color-secondary-0: 255 255 255;
+      --color-success: 0 192 115;
+      --color-warning: 255 153 0;
+      --color-error: 239 68 68;
+    }
+    &.dark-mode {
+      --color-secondary-900: 249 250 251;
+      --color-secondary-800: 243 244 246;
+      --color-secondary-700: 229 231 235;
+      --color-secondary-600: 209 213 219;
+      --color-secondary-500: 156 163 175;
+      --color-secondary-400: 107 114 128;
+      --color-secondary-300: 75 85 99;
+      --color-secondary-200: 55 65 81;
+      --color-secondary-100: 31 41 55;
+      --color-secondary-50: 17 24 39;
+      --color-secondary-0: 24 33 47;
+      --backdrop-color: 0 0 0;
+    }
   }
 
   ::-webkit-scrollbar {
@@ -115,8 +116,8 @@
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  background-color: rgb(var(--color-secondary-500));
-  color: rgb(var(--color-secondary-100));
+  background-color: rgb(var(--color-secondary-200));
+  color: rgb(var(--color-secondary-900));
   column-gap: 10px;
   padding: 5px;
 }
@@ -131,11 +132,11 @@
 
 @layer components {
   .app-input {
-    @apply block w-full rounded-lg border border-gray-200 bg-gray-50 p-2 text-base text-secondary-900 outline-none transition ease-in-out focus:border-primary-500 focus:shadow-md focus:shadow-primary-200;
+    @apply block w-full rounded-lg border border-secondary-200 bg-secondary-100 p-2 text-base text-secondary-900 outline-none transition ease-in-out focus:border-primary-500 focus:shadow-md focus:shadow-primary-200 dark:focus:shadow-secondary-100;
   }
 
   .app-btn {
-    @apply flex w-full items-center justify-center rounded-lg bg-primary-900 p-2 font-medium text-white shadow-lg shadow-primary-200 duration-300 hover:bg-primary-800;
+    @apply flex w-full items-center justify-center rounded-lg bg-primary-900 p-2 font-medium text-white shadow-lg shadow-primary-200 duration-300 hover:bg-primary-800 dark:shadow-secondary-50;
   }
 
   .sidebar__links {
@@ -163,10 +164,10 @@
   }
 
   .thead-row {
-    @apply [&>th]:whitespace-nowrap [&>th]:px-2 [&>th]:pb-3 [&>th]:text-center;
+    @apply [&>th]:whitespace-nowrap [&>th]:bg-secondary-0 [&>th]:p-2 [&>th]:text-center [&>th]:text-secondary-700 lg:[&>th]:p-3;
   }
 
   .tbody-row {
-    @apply [&:first-child>td:first-child]:rounded-tr-lg [&:first-child>td:last-child]:rounded-tl-lg [&:last-child>td:first-child]:rounded-br-lg [&:last-child>td:last-child]:rounded-bl-lg [&>td]:whitespace-nowrap [&>td]:bg-white [&>td]:px-1 [&>td]:py-3 [&>td]:text-center [&>td]:text-sm;
+    @apply [&:first-child>td:first-child]:rounded-tr-lg [&:first-child>td:last-child]:rounded-tl-lg [&:last-child>td:first-child]:rounded-br-lg [&:last-child>td:last-child]:rounded-bl-lg [&>td]:whitespace-nowrap [&>td]:bg-secondary-0 [&>td]:p-2 [&>td]:text-center [&>td]:text-sm [&>td]:text-secondary-600 lg:[&>td]:px-5 lg:[&>td]:py-3;
   }
 }

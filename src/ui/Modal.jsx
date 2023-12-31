@@ -15,7 +15,10 @@ const Modal = ({ title, children, open, onClose }) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 z-50 bg-black/30" aria-hidden="true" />
+          <div
+            className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm dark:bg-white/30"
+            aria-hidden="true"
+          />
         </Transition.Child>
 
         {/* Full-screen scrollable container */}
@@ -29,12 +32,14 @@ const Modal = ({ title, children, open, onClose }) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="max-h-[calc(100vh-1rem)] w-[calc(100vw-1rem)] max-w-screen-sm scale-100 overflow-y-auto rounded-xl bg-white p-5 opacity-100 shadow sm:w-auto sm:min-w-[350px]">
+            <Dialog.Panel className="max-h-[calc(100vh-1rem)] w-[calc(100vw-1rem)] max-w-screen-sm scale-100 overflow-y-auto rounded-xl bg-secondary-0 p-5 opacity-100 shadow sm:w-auto sm:min-w-[350px]">
               <Dialog.Title>
                 <div className="flex items-center justify-between border-b border-b-secondary-200 pb-2">
-                  <h3 className="truncate text-lg font-medium">{title}</h3>
+                  <h3 className="truncate text-lg font-medium text-secondary-900">
+                    {title}
+                  </h3>
                   <button
-                    className="rounded-lg bg-white p-1 text-2xl text-gray-400 duration-300 hover:bg-gray-50 hover:text-gray-600"
+                    className="rounded-lg bg-secondary-100 p-1 text-2xl text-secondary-500 duration-300 hover:bg-secondary-100 hover:text-secondary-700"
                     onClick={onClose}
                   >
                     <HiOutlineX />
