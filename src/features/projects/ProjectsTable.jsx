@@ -27,7 +27,7 @@ const ProjectsTable = () => {
   };
 
   if (isLoading) {
-    return <PageLoading />;
+    return <PageLoading offsetTop={156} />;
   }
 
   if (!data?.projects.length) {
