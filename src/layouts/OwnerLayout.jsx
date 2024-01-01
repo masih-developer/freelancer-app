@@ -1,16 +1,25 @@
-import { Outlet } from "react-router-dom";
+import { HiFolderOpen, HiHome } from "react-icons/hi";
+import CustomNavLink from "../ui/CustomNavLink";
 import Sidebar from "../ui/Sidebar";
-import Header from "../ui/Header";
+import MainLayout from "./MainLayout";
+
+const SIDEBAR_LINKS = [
+  { id: 1, name: "خانه", path: "dashboard", icon: <HiHome /> },
+  { id: 2, name: "پروژه ها", path: "projects", icon: <HiFolderOpen /> },
+];
 
 const OwnerLayout = () => {
   return (
-    <div className="flex">
-      <Header />
-      <Sidebar />
-      <main className="mt-14 min-h-[calc(100vh-56px)] w-full max-w-full bg-secondary-100 px-5 lg:mr-64 lg:w-[calc(100%-256px)]">
-        <Outlet />
-      </main>
-    </div>
+    <MainLayout>
+      <Sidebar>
+        {SIDEBAR_LINKS.map((item) => (
+          <CustomNavLink key={item.id} item={item}>
+            {item.icon}
+            {item.name}
+          </CustomNavLink>
+        ))}
+      </Sidebar>
+    </MainLayout>
   );
 };
 
