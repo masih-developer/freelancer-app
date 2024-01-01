@@ -51,7 +51,7 @@ const CompleteProfileForm = () => {
       className="mx-auto flex min-h-screen max-w-[400px] items-center justify-center"
       onSubmit={handleSubmit(submitFormHandler)}
     >
-      <div className="flex w-full flex-col gap-y-3 rounded-lg p-3 shadow-md sm:p-5">
+      <div className="flex w-full flex-col gap-y-3 rounded-lg bg-secondary-100 p-3 shadow-md sm:p-5">
         <TextField
           label="نام و نام خانوادگی"
           name="name"
@@ -64,6 +64,7 @@ const CompleteProfileForm = () => {
             },
           }}
           errors={formState.errors}
+          required
         />
         <TextField
           label="ایمیل"
@@ -77,6 +78,7 @@ const CompleteProfileForm = () => {
             },
           }}
           errors={formState.errors}
+          required
         />
         <RadioInputGroup
           register={register}
