@@ -81,20 +81,22 @@ const CheckOTPForm = ({ onBackStep, phoneNumber, onResendOtpHandler }) => {
 
   return (
     <form
-      className="flex flex-col rounded-lg bg-gray-50 p-3 shadow-md sm:p-5"
+      className="flex flex-col rounded-lg bg-secondary-0 p-3 shadow-md sm:p-5"
       onSubmit={checkOtpHandler}
     >
       <button
         type="button"
-        className="text-xl text-secondary-800"
+        className="ml-auto text-xl text-secondary-900"
         onClick={onBackStep}
       >
         <HiArrowRight />
       </button>
       <div className="my-2.5 flex items-center gap-1">
-        <p className="text-sm text-secondary-500">
+        <p className="text-sm text-secondary-700">
           کد تائید برای شماره موبایل{" "}
-          <span className="text-secondary-900 underline">۰۹۳۹۷۹۰۰۲۷۰</span>{" "}
+          <span className="font-medium text-secondary-900 underline">
+            ۰۹۳۹۷۹۰۰۲۷۰
+          </span>{" "}
           ارسال گردید.
         </p>
         <button
@@ -114,7 +116,7 @@ const CheckOTPForm = ({ onBackStep, phoneNumber, onResendOtpHandler }) => {
         numInputs={OTP_LENGTH}
         renderSeparator={<span>-</span>}
         containerStyle="flex-row-reverse justify-center items-center gap-1 sm:gap-2 mt-3"
-        inputStyle="border border-primary-800 !w-9 !h-9 sm:!w-12 sm:!h-12 rounded-lg focus:border-primary-900 outline-none focus:shadow-md focus:shadow-primary-200 duration-300 disabled:bg-white disabled:opacity-30 !font-medium"
+        inputStyle="border border-primary-800 !w-9 !h-9 sm:!w-12 sm:!h-12 rounded-lg focus:border-primary-900 outline-none focus:shadow-md focus:shadow-primary-200 duration-300 disabled:bg-white disabled:opacity-30 !font-medium text-secondary-900 bg-secondary-100"
         inputType="number"
         shouldAutoFocus
         renderInput={(props) => <input {...props} />}
