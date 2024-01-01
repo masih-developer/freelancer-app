@@ -19,7 +19,7 @@ const App = () => {
 
         {/* owner layout Routes */}
         <Route path="/owner" element={<OwnerLayout />}>
-          <Route index element={<Navigate to="/owner/dashboard" replace />} />
+          <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<Owner />} />
           <Route path="projects">
             <Route index element={<Projects />} />
