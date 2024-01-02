@@ -1,3 +1,5 @@
+import { toPersianNumbersWithComma } from "../utils/toPersianNumbers";
+
 const COLORS = {
   primary: "bg-primary-500/30 text-primary-900",
   green: "bg-green-500/30 text-green-500",
@@ -16,7 +18,7 @@ const Stat = ({ title, value, icon, color = "primary" }) => {
         <div className="flex flex-col">
           <h3 className="text-lg font-bold text-secondary-900">{title}</h3>
           <h4 className="mt-3 text-2xl font-medium text-secondary-900">
-            {value}
+            {toPersianNumbersWithComma(value)}
           </h4>
         </div>
       </div>

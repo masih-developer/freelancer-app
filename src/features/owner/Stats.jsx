@@ -4,10 +4,9 @@ import {
   HiOutlineViewGrid,
 } from "react-icons/hi";
 import ErrorTitle from "../../ui/ErrorTitle";
-import Stat from "./Stat";
+import Stat from "../../ui/Stat";
 
 const Stats = ({ projects }) => {
-  console.log(projects);
   const countsOfProjects = projects.length;
   const countsOfAcceptedProjects = projects.map(
     (project) => project.status === 2,

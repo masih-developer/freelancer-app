@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 const AuthContainer = () => {
   const [step, setStep] = useState(1);
   const { handleSubmit, register, getValues, formState } = useForm({
-    defaultValues: { phoneNumber: "09397900270" },
+    defaultValues: { phoneNumber: "" },
   });
 
   const { isPending } = useMutation({
@@ -25,7 +25,9 @@ const AuthContainer = () => {
     // } catch (error) {
     //     toast.error(error?.response?.data?.message || error.message);
     // }
-    toast.success("کد تائید برای شماره موبایل ۰۹۳۹۷۹۰۰۲۷۰ ارسال گردید.");
+    toast.success(
+      `کد تائید برای شماره موبایل ${getValues("phoneNumber")} ارسال گردید.`,
+    );
     setStep((prevStep) => (prevStep > 1 ? prevStep : prevStep + 1));
   };
 

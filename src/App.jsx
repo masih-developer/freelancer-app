@@ -8,6 +8,10 @@ import Project from "./pages/Project";
 import OwnerLayout from "./layouts/OwnerLayout";
 import Home from "./pages/Home";
 import OwnerDashboard from "./pages/OwnerDashboard";
+import FreelancerDashboard from "./pages/FreelancerDashboard";
+import Proposals from "./pages/Proposals";
+import SubmittedProjects from "./pages/SubmittedProjects";
+import FreelancerLayout from "./layouts/FreelancerLayout";
 
 const App = () => {
   return (
@@ -25,6 +29,14 @@ const App = () => {
             <Route index element={<Projects />} />
             <Route path=":projectId" element={<Project />} />
           </Route>
+        </Route>
+
+        {/* freelancer layout Routes */}
+        <Route path="/freelancer" element={<FreelancerLayout />}>
+          <Route index element={<Navigate to="dashboard" replace />} />
+          <Route path="dashboard" element={<FreelancerDashboard />} />
+          <Route path="proposals" element={<Proposals />} />
+          <Route path="projects" element={<SubmittedProjects />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
