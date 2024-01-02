@@ -1,7 +1,7 @@
+import DashboardHeader from "../../ui/DashboardHeader";
 import ErrorTitle from "../../ui/ErrorTitle";
 import PageLoading from "../../ui/PageLoading";
 import useOwnerProjects from "../projects/useOwnerProjects";
-import DashboardHeader from "./DashboardHeader";
 import Stats from "./Stats";
 
 const DashboardLayout = () => {
