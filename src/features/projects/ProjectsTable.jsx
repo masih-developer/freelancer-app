@@ -18,7 +18,7 @@ const ProjectsTable = () => {
   const { removeProject, isDeleting } = useRemoveProject();
 
   const acceptDeleteHandler = () => {
-    removeProject(projectIden.id, {
+    removeProject(projectIden._id, {
       onSuccess: ({ message }) => {
         toast.success(message);
         setIsDeleteOpen(false);
