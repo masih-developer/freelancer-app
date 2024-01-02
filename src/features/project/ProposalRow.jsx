@@ -2,7 +2,7 @@ import Table from "../../ui/Table";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
 import truncateText from "../../utils/truncateText";
 
-const calculate = {
+const statusOfProposals = {
   0: { label: "رد شده", className: "badge--error" },
   1: { label: "در انتظار تایید", className: "badge--secondary" },
   2: { label: "تایید شده", className: "badge--success" },
@@ -26,8 +26,10 @@ const ProposalRow = ({
       <td>{duration} روز</td>
       <td>{toPersianNumbersWithComma(price)} تومان</td>
       <td>
-        <span className={`badge mx-auto ${calculate[status].className}`}>
-          {calculate[status].label}
+        <span
+          className={`badge mx-auto ${statusOfProposals[status].className}`}
+        >
+          {statusOfProposals[status].label}
         </span>
       </td>
       <td>
