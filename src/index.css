@@ -168,6 +168,6 @@
   }
 
   .tbody-row {
-    @apply [&:first-child>td:first-child]:rounded-tr-lg [&:first-child>td:last-child]:rounded-tl-lg [&:last-child>td:first-child]:rounded-br-lg [&:last-child>td:last-child]:rounded-bl-lg [&>td]:whitespace-nowrap [&>td]:bg-secondary-0 [&>td]:p-2 [&>td]:text-center [&>td]:text-sm [&>td]:text-secondary-600 lg:[&>td]:px-5 lg:[&>td]:py-3;
+    @apply [&:last-child>td:first-child]:rounded-br-lg [&:last-child>td:last-child]:rounded-bl-lg [&>td]:whitespace-nowrap [&>td]:bg-secondary-0 [&>td]:p-2 [&>td]:text-center [&>td]:text-sm [&>td]:text-secondary-600 lg:[&>td]:px-5 lg:[&>td]:py-3;
   }
 }
