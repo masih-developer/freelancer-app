@@ -126,13 +126,13 @@ const AddNewProjectForm = ({ projectToEdit = {}, onClose }) => {
             required: REQUIRED_FIELD_TEXT,
           }}
         />
-        <TagsInput value={tags} onChange={setTags} />
-        <DatePickerField
-          label="ددلاین"
-          date={date}
-          setDate={setDate}
-          required
-        />
+        <div className="flex flex-col">
+          <label className="mb-2 flex items-center gap-1 text-sm text-secondary-900">
+            تگ های پروژه
+          </label>
+          <TagsInput value={tags} onChange={setTags} />
+        </div>
+        <DatePickerField label="ددلاین" date={date} setDate={setDate} />
       </div>
       {isCreating || isEditing ? (
         <div className="mt-5 text-center">

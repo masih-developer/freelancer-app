@@ -29,3 +29,8 @@ export const getProjectApi = async (id) => {
   const { data } = await mainRequest.get(`/project/${id}`);
   return data.data;
 };
+
+export const getProjectsApi = async () => {
+  const { data } = await mainRequest.get("/project/list");
+  return data.data;
+};
