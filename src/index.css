@@ -160,14 +160,14 @@
   }
 
   .badge--secondary {
-    @apply bg-secondary-50 text-secondary-600 ring-secondary-200;
+    @apply bg-secondary-100 text-secondary-600 ring-secondary-200;
   }
 
   .thead-row {
-    @apply [&>th]:whitespace-nowrap [&>th]:bg-secondary-0 [&>th]:p-2 [&>th]:text-center [&>th]:text-secondary-700 lg:[&>th]:p-3;
+    @apply [&>th]:whitespace-nowrap [&>th]:border-b [&>th]:border-b-secondary-200 [&>th]:bg-secondary-0 [&>th]:p-2 [&>th]:text-center [&>th]:text-secondary-700 lg:[&>th]:p-3;
   }
 
   .tbody-row {
-    @apply [&:last-child>td:first-child]:rounded-br-lg [&:last-child>td:last-child]:rounded-bl-lg [&>td]:whitespace-nowrap [&>td]:bg-secondary-0 [&>td]:p-2 [&>td]:text-center [&>td]:text-sm [&>td]:text-secondary-600 lg:[&>td]:px-5 lg:[&>td]:py-3;
+    @apply [&:last-child>td:first-child]:rounded-br-lg [&:last-child>td:last-child]:rounded-bl-lg [&>td]:whitespace-nowrap [&>td]:border-b [&>td]:border-b-secondary-200 [&>td]:bg-secondary-0 [&>td]:p-2 [&>td]:text-center [&>td]:text-sm [&>td]:text-secondary-600 lg:[&>td]:p-3;
   }
 }
