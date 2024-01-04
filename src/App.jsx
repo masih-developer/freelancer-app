@@ -12,6 +12,13 @@ import FreelancerDashboard from "./pages/FreelancerDashboard";
 import Proposals from "./pages/Proposals";
 import SubmittedProjects from "./pages/SubmittedProjects";
 import FreelancerLayout from "./layouts/FreelancerLayout";
+import ProtectedRoute from "./ui/ProtectedRoute";
+
+const ROLES = {
+  freelancer: "FREELANCER",
+  owner: "OWNER",
+  admin: "ADMIN",
+};
 
 const App = () => {
   return (
@@ -22,7 +29,14 @@ const App = () => {
         <Route path="" element={<Home />} />
 
         {/* owner layout Routes */}
-        <Route path="/owner" element={<OwnerLayout />}>
+        <Route
+          path="/owner"
+          element={
+            <ProtectedRoute allowedRoles={[ROLES.owner]}>
+              <OwnerLayout />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<OwnerDashboard />} />
           <Route path="projects">
@@ -32,7 +46,14 @@ const App = () => {
         </Route>
 
         {/* freelancer layout Routes */}
-        <Route path="/freelancer" element={<FreelancerLayout />}>
+        <Route
+          path="/freelancer"
+          element={
+            <ProtectedRoute allowedRoles={[ROLES.freelancer]}>
+              <FreelancerLayout />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<FreelancerDashboard />} />
           <Route path="proposals" element={<Proposals />} />
