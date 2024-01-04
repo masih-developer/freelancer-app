@@ -4,7 +4,7 @@ import SelectBox from "./SelectBox";
 
 const findLabel = (array, value) => array.find((item) => item.value === value);
 
-const FilterDropdown = ({ options, filterField }) => {
+const FilterDropdown = ({ options, filterField, loading, width }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const category = searchParams.get(filterField) || "";
   const [selectedTitle, setSelectedTitle] = useState(
@@ -33,6 +33,8 @@ const FilterDropdown = ({ options, filterField }) => {
       options={options}
       onChange={changeSelectHandler}
       selected={selectedTitle}
+      loading={loading}
+      width={width}
     />
   );
 };
