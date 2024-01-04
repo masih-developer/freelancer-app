@@ -30,7 +30,7 @@ export const getProjectApi = async (id) => {
   return data.data;
 };
 
-export const getProjectsApi = async () => {
-  const { data } = await mainRequest.get("/project/list");
+export const getProjectsApi = async (params) => {
+  const { data } = await mainRequest.get("/project/list", { params });
   return data.data;
 };
