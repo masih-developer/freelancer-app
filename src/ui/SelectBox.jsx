@@ -57,12 +57,14 @@ const SelectBox = ({ options, onChange, selected, width, loading }) => {
                     )}
                   </Listbox.Option>
                 ))}
-              <Listbox.Option
-                className="flex items-center justify-center py-2"
-                onClick={(e) => e.preventDefault()}
-              >
-                {loading && <Loading size={10} />}
-              </Listbox.Option>
+              {loading && (
+                <Listbox.Option
+                  className="flex items-center justify-center py-2"
+                  onClick={(e) => e.preventDefault()}
+                >
+                  <Loading size={10} />
+                </Listbox.Option>
+              )}
             </Listbox.Options>
           </Transition>
         </div>
