@@ -4,7 +4,7 @@ const UserAvatar = ({ user }) => {
   return (
     <div className="flex items-center gap-x-2 text-secondary-600">
       <img
-        src={avatarUrl ? avatarUrl : "/public/images/user.jpg"}
+        src={avatarUrl ? avatarUrl : "/images/user.jpg"}
         alt=""
         className="size-10 rounded-full"
       />
