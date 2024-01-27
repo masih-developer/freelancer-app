@@ -37,9 +37,12 @@ const HeaderMenu = () => {
           </Link>
         </li>
         <li>
-          <Link className="flex size-10 items-center justify-center rounded-full text-2xl text-secondary-600 duration-300 hover:bg-red-500/10 hover:text-error">
+          <button
+            className="flex size-10 items-center justify-center rounded-full text-2xl text-secondary-600 duration-300 hover:bg-red-500/10 hover:text-error"
+            onClick={() => setIsOpenLogout(true)}
+          >
             <HiOutlineLogout />
-          </Link>
+          </button>
         </li>
       </ul>
       <Modal
