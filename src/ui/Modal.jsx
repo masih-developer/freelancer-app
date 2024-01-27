@@ -5,7 +5,7 @@ import { HiOutlineX } from "react-icons/hi";
 const Modal = ({ title, children, open, onClose }) => {
   return (
     <Transition show={open} as={Fragment}>
-      <Dialog open={open} onClose={onClose}>
+      <Dialog onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -21,7 +21,6 @@ const Modal = ({ title, children, open, onClose }) => {
           />
         </Transition.Child>
 
-        {/* Full-screen scrollable container */}
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <Transition.Child
             as={Fragment}
